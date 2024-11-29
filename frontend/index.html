@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Management</h1>
+        
+        <div class="controls">
+            <div class="left-controls">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Tìm theo mã SV hoặc tên">
+                </div>
+                <div class="student-count">
+                    <span id="student-count"></span>
+                </div>
+                
+                <select id="rows-per-page">
+                    <option value="5">5 rows</option>
+                    <option value="10">10 rows</option>
+                    <option value="20">20 rows</option>
+                </select>
+                <button id="delete-selected" class="hidden">Delete Selected</button>
+            </div>
+            <button id="add-sample-btn" class="btn-secondary">Thêm dữ liệu mẫu</button>
+            <button id="add-student-btn" class="btn-primary">Add Student</button>
+        </div>
+
+        <div class="table-container">
+            <table id="students-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Roll</th>
+                        <th>Birthday</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="students-body"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button id="prev-page">Previous</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button id="next-page">Next</button>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Student -->
+    <div id="student-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Add Student</h2>
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="StudentID">Student ID:</label>
+                    <input type="number" id="StudentID" required>
+                </div>
+                <div class="form-group">
+                    <label for="Name">Name:</label>
+                    <input type="text" id="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Roll">Roll:</label>
+                    <input type="number" id="Roll" required>
+                </div>
+                <div class="form-group">
+                    <label for="Birthday">Birthday:</label>
+                    <input type="date" id="Birthday">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address:</label>
+                    <input type="text" id="Address">
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-primary">Save</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Đang xử lý...</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
